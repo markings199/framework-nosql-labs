@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/markings199/framework-nosql-labs/issues"
   },
-  "homepage": "https://github.com/markings199/framework-nosql-labs#readme"
+  "homepage": "https://github.com/markings199/framework-nosql-labs#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
