@@ -1,11 +1,8 @@
 # Framework and NoSQL Technologies - Laboratory Repository
 
 **Student Name:** MARK JHON GUILLERMO  
-
 **Course & Section:** BSIS 3A  
-
 **Professor:** Red Guillermo Jr. V.  
-
 **Email:** mjmg2023-8189-45492@bicol-u.edu.ph  
 
 ---
@@ -54,22 +51,22 @@ This week we implemented a **Users Controller** with full CRUD operations using 
 ## Thunder Client Testing (Screenshots)
 
 ### 1. Start Server  
-![Start Server](./screenshots/start-server.png)
+![Start Server](./screenshots/Start%20Server.png)
 
 ### 2. Create User (POST)  
-![Create User](./screenshots/create-user.png)
+![Create User](./screenshots/Create%20User(POST%20apiusers).png)
 
 ### 3. Get All Users (GET)  
-![Get All Users](./screenshots/get-all-users.png)
+![Get All Users](./screenshots/Get%20All%20Users(GET%20apiusers).png)
 
 ### 4. Get Single User (GET by ID)  
-![Get Single User](./screenshots/get-single-user.png)
+![Get Single User](./screenshots/3-get-user-by-id.png.png)
 
 ### 5. Update User (PUT)  
-![Update User](./screenshots/update-user.png)
+![Update User](./screenshots/4-update-user.png.png)
 
 ### 6. Delete User (DELETE)  
-![Delete User](./screenshots/delete-user.png)
+![Delete User](./screenshots/5-delete-user.png.png)
 
 ### 7. Get Users (Empty Response)  
-![Get Users Empty](./screenshots/get-users-empty.png)
+![Get Users Empty](./screenshots/7-get-users-empty.png.png)
