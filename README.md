@@ -31,6 +31,41 @@ This week we implemented a **Users Controller** with full CRUD operations using 
 ### Endpoints
 - **Create User**  
   `POST /api/users`  
-  Body:  
-  ```json
-  { "id": 1, "name": "Alice", "email": "alice@example.com" }
+  Status: `201 Created` | Errors: `400 Bad Request`, `409 Conflict`
+
+- **Get All Users**  
+  `GET /api/users`  
+  Status: `200 OK`
+
+- **Get Single User**  
+  `GET /api/users/:id`  
+  Status: `200 OK` | Errors: `404 Not Found`
+
+- **Update User**  
+  `PUT /api/users/:id`  
+  Status: `200 OK` | Errors: `400 Bad Request`, `404 Not Found`
+
+- **Delete User**  
+  `DELETE /api/users/:id`  
+  Status: `200 OK` | Errors: `404 Not Found`
+
+---
+
+## Thunder Client Testing (Screenshots)
+
+### 1. Create User  
+![Create User](./screenshots/create-user.png)
+
+### 2. Get All Users  
+![Get All Users](./screenshots/get-all-users.png)
+
+### 3. Get Single User  
+![Get Single User](./screenshots/get-single-user.png)
+
+### 4. Update User  
+![Update User](./screenshots/update-user.png)
+
+### 5. Delete User  
+![Delete User](./screenshots/delete-user.png)
+
+---
