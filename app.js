@@ -19,6 +19,7 @@ const aboutRoutes = require('./routes/aboutRoutes');
 const contactRoutes = require('./routes/contactRoutes');
 const userRoutes = require('./routes/userRoutes');
 
+// mount routes
 app.use('/', homeRoutes);
 app.use('/', aboutRoutes);
 app.use('/', contactRoutes);
@@ -31,7 +32,7 @@ app.use((req, res) => {
 
 // Centralized error handler
 app.use((err, req, res, next) => {
-  console.error(err);
+  console.error('❌ Unexpected error:', err.stack);
   res.status(500).json({ message: 'Internal Server Error' });
 });
 
