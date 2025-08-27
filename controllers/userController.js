@@ -1,3 +1,5 @@
+// controllers/userController.js
+
 // Create User
 exports.createUser = (req, res) => {
   const { id, name, email } = req.body || {};
@@ -8,16 +10,28 @@ exports.createUser = (req, res) => {
   const exists = req.store.users.find(u => u.id === Number(id));
   if (exists) return res.status(409).json({ message: 'User id already exists.' });
 
-  req.store.users.push({ id: Number(id), name, email });
+  const newUser = { id: Number(id), name, email };
+  req.store.users.push(newUser);
 
   console.log('📌 Users now:', req.store.users);
 
-  return res.status(201).json({ message: 'User created' });
+  // 🔹 Add Location header for newly created user
+  res.setHeader('Location', `/api/users/${id}`);
+
+  return res.status(201).json({ message: 'User created', user: newUser });
 };
 
-// Get All Users
+// Get All Users (with optional query filtering)
 exports.getAllUsers = (req, res) => {
-  return res.status(200).json(req.store.users);
+  const { name } = req.query; // Example: /api/users?name=ali
+  let users = req.store.users;
+
+  if (name) {
+    const search = name.toLowerCase();
+    users = users.filter(u => u.name.toLowerCase().includes(search));
+  }
+
+  return res.status(200).json(users);
 };
 
 // Get User by ID
@@ -46,6 +60,6 @@ exports.deleteUser = (req, res) => {
   const index = req.store.users.findIndex(u => u.id === id);
   if (index === -1) return res.status(404).json({ message: 'User not found' });
 
-  req.store.users.splice(index, 1);
-  return res.status(200).json({ message: 'User deleted' });
+  const [deleted] = req.store.users.splice(index, 1);
+  return res.status(200).json({ message: 'User deleted', user: deleted });
 };
