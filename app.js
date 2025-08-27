@@ -6,7 +6,7 @@ const PORT = 3000;
 // ✅ Middleware: parse JSON
 app.use(express.json());
 
-// ✅ In-memory store (Week 3, Day 1)
+// ✅ In-memory store (Week 3, Day 2)
 // Using app.locals so it persists for all requests
 app.locals.store = { users: [] };
 
@@ -16,12 +16,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// --- Existing routes ---
+// --- Existing routes (Day 1) ---
 const homeRoutes = require('./routes/homeRoutes');
 const aboutRoutes = require('./routes/aboutRoutes');
 const contactRoutes = require('./routes/contactRoutes');
 
-// --- New User routes (Week 3, Day 1) ---
+// --- New User routes (Day 2: Full CRUD) ---
 const userRoutes = require('./routes/userRoutes');
 
 // ✅ Mount routes
