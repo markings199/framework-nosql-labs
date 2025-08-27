@@ -49,12 +49,26 @@ This repository contains all laboratory outputs from Week 1 to Week 9, progressi
 - **Delete User**  
   `DELETE /api/users/:id`  
   Status: `200 OK` | Errors: `404 Not Found`
+## Thunder Client Testing (Screenshots)
 
-### Thunder Client Testing (screenshots)
-- Start Server → `start-server.png`  
-- Create User → `create-user.png`  
-- Get All Users → `get-all-users.png`  
-- Get User by ID → `get-user-by-id.png`  
-- Update User → `update-user.png`  
-- Delete User → `delete-user.png`  
-- Get Users (Empty) → `get-users-empty.png`
+### 1. Start Server
+![Start Server](./screenshots/start-server.png)
+
+### 2. Create User (POST)
+![Create User](./screenshots/create-user.png)
+
+### 3. Get All Users (GET)
+![Get All Users](./screenshots/get-all-users.png)
+
+### 4. Get Single User (GET by ID)
+![Get User by ID](./screenshots/get-user-by-id.png)
+
+### 5. Update User (PUT)
+![Update User](./screenshots/update-user.png)
+
+### 6. Delete User (DELETE)
+![Delete User](./screenshots/delete-user.png)
+
+### 7. Get Users (Empty Response)
+![Get Users Empty](./screenshots/get-users-empty.png)
+
