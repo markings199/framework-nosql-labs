@@ -50,6 +50,7 @@ This week we implemented a **Users Controller** with full CRUD operations using 
   Status: `200 OK` | Errors: `404 Not Found`
 
 ---
+
 ## Thunder Client Testing (Screenshots)
 
 ### 1. Start Server  
