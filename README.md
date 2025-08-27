@@ -68,4 +68,10 @@ This week we implemented a **Users Controller** with full CRUD operations using 
 ### 5. Delete User  
 ![Delete User](./screenshots/delete-user.png)
 
+### 6. Error Handling (Duplicate User / Not Found)  
+![Error Handling](./screenshots/error-handling.png)
+
+### 7. Get All Users (Empty Response)  
+![Get All Users Empty](./screenshots/get-all-users-empty.png)
+
 ---
