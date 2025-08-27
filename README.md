@@ -53,25 +53,23 @@ This week we implemented a **Users Controller** with full CRUD operations using 
 
 ## Thunder Client Testing (Screenshots)
 
-### 1. Create User  
-![Create User](./screenshots/create-user.png)
+### 1. Start Server  
+![Start Server](./screenshots/Start%20Server.png)
 
-### 2. Get All Users  
-![Get All Users](./screenshots/get-all-users.png)
+### 2. Create User (POST)  
+![Create User](./screenshots/Create%20User(POST%20apiusers).png)
 
-### 3. Get Single User  
-![Get Single User](./screenshots/get-single-user.png)
+### 3. Get All Users (GET)  
+![Get All Users](./screenshots/Get%20All%20Users(GET%20apiusers).png)
 
-### 4. Update User  
-![Update User](./screenshots/update-user.png)
+### 4. Get Single User (GET by ID)  
+![Get Single User](./screenshots/3-get-user-by-id.png.png)
 
-### 5. Delete User  
-![Delete User](./screenshots/delete-user.png)
+### 5. Update User (PUT)  
+![Update User](./screenshots/4-update-user.png.png)
 
-### 6. Error Handling (Duplicate User / Not Found)  
-![Error Handling](./screenshots/error-handling.png)
+### 6. Delete User (DELETE)  
+![Delete User](./screenshots/5-delete-user.png.png)
 
-### 7. Get All Users (Empty Response)  
-![Get All Users Empty](./screenshots/get-all-users-empty.png)
-
----
+### 7. Get Users (Empty Response)  
+![Get Users Empty](./screenshots/7-get-users-empty.png.png)
