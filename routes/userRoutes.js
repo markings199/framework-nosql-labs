@@ -1,13 +1,11 @@
 // routes/userRoutes.js
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const userController = require("../controllers/userController");
+const c = require('../controllers/userController');
 
-// CRUD routes
-router.post("/users", userController.createUser);       // POST /api/users → create
-router.get("/users", userController.getAllUsers);       // GET /api/users (with ?name= filter)
-router.get("/users/:id", userController.getUserById);   // GET /api/users/:id → read one
-router.put("/users/:id", userController.updateUser);    // PUT /api/users/:id → update
-router.delete("/users/:id", userController.deleteUser); // DELETE /api/users/:id → delete
+// CRUD routes mapping
+router.post('/users', c.createUser);     // POST /api/users → create user
+router.get('/users', c.getUsers);        // GET  /api/users → get all users
+router.get('/users/:id', c.getUserById); // GET  /api/users/:id → get single user
 
 module.exports = router;

@@ -1,0 +1,21 @@
+* [33mb186ed7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Week 3 Day 2: Update/Delete, 404 + centralized error handler, README updates
+* [33m8a049da[m Week 3 Day 1: Users controller + create/read endpoints
+* [33m25e0e79[m Fix screenshot filenames
+* [33m47f10f0[m Fix Thunder Client Testing screenshots with image links
+* [33m879399f[m Fix README with proper screenshot links
+* [33m5b5a966[m Update README with screenshot links
+* [33m1e37aa1[m Update README and add screenshots with correct filenames
+* [33m11ef907[m Fix README with correct screenshot links
+* [33m0ce30af[m Fix screenshots and README links
+* [33m77e3c0a[m Updated README with correct screenshot filenames
+* [33m8e53bb4[m Week 3: Add all 7 Thunder Client screenshots in README
+* [33m6775751[m Week 3: Finalize README with endpoints and screenshots
+* [33m0175fb1[m Week 3: Add Thunder Client screenshots and update code
+* [33m22ea3b2[m Week 3: Update README with Users API endpoints and screenshots
+* [33m0e8f46d[m Week 3: Users controller full CRUD + error handler
+* [33ma0ae786[m Added Contact route challenge
+* [33ma16b55a[m Add .gitignore file
+* [33m8e9f6a2[m Saved latest changes before pull
+* [33m3039ea8[m Week 2 Lab - MVC structure and basic routing
+* [33m5e261d8[m Add package.json
+* [33mc403386[m Add README.md
