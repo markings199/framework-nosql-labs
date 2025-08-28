@@ -2,22 +2,23 @@
 
 // Create User
 exports.createUser = (req, res) => {
-  const { id, name, email } = req.body || {};
-  if (!id || !name || !email) {
-    return res.status(400).json({ message: 'id, name, and email are required.' });
+  const { name, email } = req.body || {};
+  if (!name || !email) {
+    return res.status(400).json({ message: 'name and email are required.' });
   }
 
-  // Prevent duplicate IDs
-  const exists = req.store.users.find(u => u.id === Number(id));
-  if (exists) return res.status(409).json({ message: 'User id already exists.' });
+  // Auto-generate ID
+  const newId = req.store.users.length > 0
+    ? Math.max(...req.store.users.map(u => u.id)) + 1
+    : 1;
 
-  const newUser = { id: Number(id), name, email };
+  const newUser = { id: newId, name, email };
   req.store.users.push(newUser);
 
   console.log('📌 Users now:', req.store.users);
 
   // Add Location header for newly created user
-  res.setHeader('Location', `/api/users/${id}`);
+  res.setHeader('Location', `/api/users/${newId}`);
 
   return res.status(201).json({ message: 'User created', user: newUser });
 };
@@ -49,7 +50,6 @@ exports.updateUser = (req, res) => {
   const user = req.store.users.find(u => u.id === id);
   if (!user) return res.status(404).json({ message: 'User not found' });
 
-  // Only update fields provided in request body
   const { name, email } = req.body || {};
   if (name) user.name = name;
   if (email) user.email = email;

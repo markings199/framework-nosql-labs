@@ -6,9 +6,14 @@ const PORT = 3000;
 // ✅ Middleware: parse JSON
 app.use(express.json());
 
-// ✅ In-memory store (Week 3, Day 2)
-// Using app.locals so it persists for all requests
-app.locals.store = { users: [] };
+// ✅ In-memory store with 3 preloaded users
+app.locals.store = {
+  users: [
+    { id: 1, name: "Alice", email: "alice@example.com" },
+    { id: 2, name: "Bob", email: "bob@example.com" },
+    { id: 3, name: "Charlie", email: "charlie@example.com" }
+  ]
+};
 
 // Attach store to every request
 app.use((req, res, next) => {
