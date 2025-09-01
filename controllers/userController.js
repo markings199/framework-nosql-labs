@@ -1,68 +1,73 @@
-// controllers/userController.js
+const User = require('../models/userModel');
+const mongoose = require('mongoose');
 
-// Create User
-exports.createUser = (req, res) => {
-  const { name, email } = req.body || {};
-  if (!name || !email) {
-    return res.status(400).json({ message: 'name and email are required.' });
+// CREATE
+exports.createUser = async (req, res) => {
+  try {
+    const user = await User.create(req.body);
+    res.status(201).json({ message: 'User created', user });
+  } catch (err) {
+    if (err.code === 11000) {
+      return res.status(400).json({ message: 'Email already exists' });
+    }
+    res.status(400).json({ message: err.message });
   }
-
-  // Auto-generate ID
-  const newId = req.store.users.length > 0
-    ? Math.max(...req.store.users.map(u => u.id)) + 1
-    : 1;
-
-  const newUser = { id: newId, name, email };
-  req.store.users.push(newUser);
-
-  console.log('📌 Users now:', req.store.users);
-
-  // Add Location header for newly created user
-  res.setHeader('Location', `/api/users/${newId}`);
-
-  return res.status(201).json({ message: 'User created', user: newUser });
 };
 
-// Get All Users (with optional query filtering by name)
-exports.getAllUsers = (req, res) => {
-  const { name } = req.query;
-  let users = req.store.users;
-
-  if (name) {
-    const search = name.toLowerCase();
-    users = users.filter(u => u.name.toLowerCase().includes(search));
+// READ ALL (with optional name filter)
+exports.getAllUsers = async (req, res) => {
+  try {
+    const { name } = req.query;
+    let query = {};
+    if (name) query.name = { $regex: name, $options: 'i' };
+    const users = await User.find(query);
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-
-  return res.status(200).json(users);
 };
 
-// Get User by ID
-exports.getUserById = (req, res) => {
-  const id = Number(req.params.id);
-  const user = req.store.users.find(u => u.id === id);
-  if (!user) return res.status(404).json({ message: 'User not found' });
-  return res.status(200).json(user);
+// READ ONE
+exports.getUserById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!mongoose.isValidObjectId(id)) return res.status(400).json({ message: 'Invalid ID format' });
+    const user = await User.findById(id);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
 
-// Update User
-exports.updateUser = (req, res) => {
-  const id = Number(req.params.id);
-  const user = req.store.users.find(u => u.id === id);
-  if (!user) return res.status(404).json({ message: 'User not found' });
+// UPDATE
+exports.updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!mongoose.isValidObjectId(id)) return res.status(400).json({ message: 'Invalid ID format' });
 
-  const { name, email } = req.body || {};
-  if (name) user.name = name;
-  if (email) user.email = email;
+    const user = await User.findByIdAndUpdate(id, req.body, {
+      new: true,
+      runValidators: true
+    });
 
-  return res.status(200).json({ message: 'User updated', user });
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    res.status(200).json({ message: 'User updated', user });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 };
 
-// Delete User
-exports.deleteUser = (req, res) => {
-  const id = Number(req.params.id);
-  const index = req.store.users.findIndex(u => u.id === id);
-  if (index === -1) return res.status(404).json({ message: 'User not found' });
+// DELETE
+exports.deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!mongoose.isValidObjectId(id)) return res.status(400).json({ message: 'Invalid ID format' });
 
-  const [deleted] = req.store.users.splice(index, 1);
-  return res.status(200).json({ message: 'User deleted', user: deleted });
+    const user = await User.findByIdAndDelete(id);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    res.status(200).json({ message: 'User deleted', user });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 };

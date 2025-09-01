@@ -1,52 +1,21 @@
-// app.js
+require('dotenv').config(); // Load environment variables
 const express = require('express');
-const app = express();
-const PORT = 3000;
-
-// ✅ Middleware: parse JSON
-app.use(express.json());
-
-// ✅ In-memory store with 3 preloaded users
-app.locals.store = {
-  users: [
-    { id: 1, name: "Alice", email: "alice@example.com" },
-    { id: 2, name: "Bob", email: "bob@example.com" },
-    { id: 3, name: "Charlie", email: "charlie@example.com" }
-  ]
-};
-
-// Attach store to every request
-app.use((req, res, next) => {
-  req.store = req.app.locals.store;
-  next();
-});
-
-// --- Existing routes ---
-const homeRoutes = require('./routes/homeRoutes');
-const aboutRoutes = require('./routes/aboutRoutes');
-const contactRoutes = require('./routes/contactRoutes');
-
-// --- User routes (Full CRUD) ---
+const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes');
 
-// ✅ Mount routes
-app.use('/', homeRoutes);
-app.use('/', aboutRoutes);
-app.use('/', contactRoutes);
-app.use('/api', userRoutes); // Users API mounted under /api
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-// 404 middleware (for unknown routes)
-app.use((req, res) => {
-  res.status(404).json({ message: 'Route not found' });
-});
+// Middleware
+app.use(express.json());
 
-// Centralized error handler
-app.use((err, req, res, next) => {
-  console.error('❌ Unexpected error:', err.stack);
-  res.status(500).json({ message: 'Internal Server Error' });
-});
+// Connect to MongoDB Atlas
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('✅ MongoDB connected'))
+  .catch(err => console.error('❌ MongoDB connection error:', err));
 
-// ✅ Start server
-app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
-});
+// Routes
+app.use('/api', userRoutes);
+
+// Start server
+app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
