@@ -126,4 +126,4 @@ MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/mydb
 | PUT Update User  | ![PUT](./screenshots/PUT.png)         |
 | DELETE User      | ![DELETE](./screenshots/DELETE.png)   |
 | GET All Users    | ![GET](./screenshots/GET.png)         |
-| GET User by ID 2 | ![GET_2](./screenshots/GET_2.png) |
+| GET User by ID 2 | ![GET_2](./screenshots/GET 2.png) |
