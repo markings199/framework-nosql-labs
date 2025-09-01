@@ -119,8 +119,8 @@ MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/mydb
 
 | *Test*           | *Screenshot*                          |
 | ---------------- | ------------------------------------- |
-| POST Create User | ![POST](./Screenshots/POST.png)       |
-| PUT Update User  | ![PUT](./Screenshots/PUT.png)         |
-| DELETE User      | ![DELETE](./Screenshots/DELETE.png)   |
-| GET All Users    | ![GET](./Screenshots/GET.png)         |
-| GET User by ID 2 | ![GET(2)](./Screenshots/GET(2).png)   |
+| POST Create User | ![POST](./screenshots/POST.png)       |
+| PUT Update User  | ![PUT](./screenshots/PUT.png)         |
+| DELETE User      | ![DELETE](./screenshots/DELETE.png)   |
+| GET All Users    | ![GET](./screenshots/GET.png)         |
+| GET User by ID 2 | ![GET_2](./screenshots/GET_2.png) |
