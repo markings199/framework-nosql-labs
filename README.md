@@ -106,13 +106,16 @@ MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/mydb
 
 ## Sample JSON Response with MongoDB _id
 
+## Sample JSON Response with MongoDB _id
+
+```json
 {
   "_id": "68b5be9be4df145765655c07",
   "name": "Guillermo Updated",
   "email": "guillermo.updated@example.com",
   "__v": 0
 }
-
+```
 ---
 
 ## Thunder Client Tests (Week 4)
