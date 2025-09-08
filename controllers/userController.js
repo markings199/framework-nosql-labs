@@ -1,79 +1,64 @@
-const User = require('../models/userModel');
-const mongoose = require('mongoose');
+// controllers/userController.js
+const User = require("../models/userModel");
 
-// CREATE a new user
+// CREATE
 exports.createUser = async (req, res) => {
   try {
-    const user = await User.create(req.body);
-    res.status(201).json({ message: 'User created', user });
+    const user = await User.create(req.body); // Save to DB
+    res.status(201).json(user);
   } catch (err) {
-    // Handle duplicate email
-    if (err.code === 11000) {
-      return res.status(400).json({ message: 'Email already exists' });
-    }
     res.status(400).json({ message: err.message });
   }
 };
 
-// READ ALL users (with optional name filter)
-exports.getAllUsers = async (req, res) => {
+// READ ALL
+exports.getUsers = async (req, res) => {
   try {
-    const { name } = req.query;
-    let query = {};
-    if (name) query.name = { $regex: name, $options: 'i' };
-    const users = await User.find(query);
+    let filter = {};
+    if (req.query.name) {
+      // Case-insensitive search by name
+      filter.name = { $regex: req.query.name, $options: "i" };
+    }
+
+    const users = await User.find(filter);
     res.status(200).json(users);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
 
-// READ ONE user by ID
+// READ ONE
 exports.getUserById = async (req, res) => {
   try {
-    const { id } = req.params;
-    if (!mongoose.isValidObjectId(id)) return res.status(400).json({ message: 'Invalid ID format' });
-
-    const user = await User.findById(id);
-    if (!user) return res.status(404).json({ message: 'User not found' });
-
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
     res.status(200).json(user);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(400).json({ message: "Invalid ID format" });
   }
 };
 
-// UPDATE user by ID
+// UPDATE
 exports.updateUser = async (req, res) => {
   try {
-    const { id } = req.params;
-    if (!mongoose.isValidObjectId(id)) return res.status(400).json({ message: 'Invalid ID format' });
-
-    const user = await User.findByIdAndUpdate(id, req.body, {
-      new: true,
-      runValidators: true
-    });
-
-    if (!user) return res.status(404).json({ message: 'User not found' });
-    res.status(200).json({ message: 'User updated', user });
+    const user = await User.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true } // return updated document
+    );
+    if (!user) return res.status(404).json({ message: "User not found" });
+    res.status(200).json({ message: "User updated", user });
   } catch (err) {
-    if (err.code === 11000) {
-      return res.status(400).json({ message: 'Email already exists' });
-    }
     res.status(400).json({ message: err.message });
   }
 };
 
-// DELETE user by ID
+// DELETE
 exports.deleteUser = async (req, res) => {
   try {
-    const { id } = req.params;
-    if (!mongoose.isValidObjectId(id)) return res.status(400).json({ message: 'Invalid ID format' });
-
-    const user = await User.findByIdAndDelete(id);
-    if (!user) return res.status(404).json({ message: 'User not found' });
-
-    res.status(200).json({ message: 'User deleted', user });
+    const user = await User.findByIdAndDelete(req.params.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+    res.status(200).json({ message: "User deleted", user });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }

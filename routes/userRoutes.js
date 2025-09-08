@@ -1,11 +1,13 @@
-const express = require('express');
-const router = express.Router();
-const userController = require('../controllers/userController');
+const express = require("express"); // Import Express
+const router = express.Router(); // Create a new router object
+const c = require("../controllers/userController"); // Import controller functions
+const auth = require("../middleware/authMiddleware"); // Import JWT middleware
 
-router.post('/users', userController.createUser);       // Create user
-router.get('/users', userController.getAllUsers);       // Get all users
-router.get('/users/:id', userController.getUserById);   // Get single user
-router.put('/users/:id', userController.updateUser);    // Update user
-router.delete('/users/:id', userController.deleteUser); // Delete user
+// Protected CRUD routes (require JWT)
+router.post("/users", auth, c.createUser); // POST /api/users
+router.get("/users", auth, c.getUsers); // GET  /api/users
+router.get("/users/:id", auth, c.getUserById); // GET  /api/users/:id
+router.put("/users/:id", auth, c.updateUser); // PUT  /api/users/:id
+router.delete("/users/:id", auth, c.deleteUser); // DELETE /api/users/:id
 
-module.exports = router;
+module.exports = router; // Export router so app.js can use it
