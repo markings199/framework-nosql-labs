@@ -127,3 +127,50 @@ MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/mydb
 | DELETE User      | ![DELETE](./screenshots/DELETE.png)   |
 | GET All Users    | ![GET](./screenshots/GET.png)         |
 | GET User by ID 2 | ![GET_2](./screenshots/GET(2).png) |
+
+## 📌 Week 5 – Authentication & Protected Routes
+
+### 🔑 New Endpoints
+
+- *POST* /api/auth/signup → Create a new account
+
+  - Request body:  
+    json
+    {
+    "name": "Mark",
+    "email": "mark@example.com",
+    "password": "123456"
+    }
+  - Response:  
+    json
+    {
+    "message": "User created successfully",
+    "userId": "68bed8939573fa0f921ef274"
+    }
+
+- *POST* /api/auth/login → Log in and receive a JWT token
+  - Request body:  
+    json
+    {
+    "email": "mark@example.com",
+    "password": "123456"
+    }
+  - Response:  
+     json
+    {
+    "message": "Login successful",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmVkODkzOTU3M2ZhMGY5MjFlZjI3NCIsImVtYWlsIjoibWFya0BleGFtcGxlLmNvbSIsImlhdCI6MTc1NzMzNzgwOCwiZXhwIjoxNzU3MzQxNDA4fQ.QY_CIeOcA-sxsZArJAPwX8Ex63DNaP9J8w0OXQx-VBc"
+    }
+
+How to call protected routes with
+
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmVmMWM4NjM4NzU0NjU4YjAzMmU5NSIsImVtYWlsIjoiZ3VpbGxlcm1vQGV4YW1wbGUuY29tIiwiaWF0IjoxNzU3MzQ0Mjg3LCJleHAiOjE3NTczNDc4ODd9.N9gcvQMIWBNoyw33NWnE3ITvi6tgIfuWbPzs5d_DAc0
+
+# Thunder Client Tests (Week 5 – JWT Authentication)
+
+| *Test*                     | *Endpoint & Method*       | *Screenshot*                      |
+| --------------------------- | ------------------------ | --------------------------------- |
+| Sign Up                     | POST /api/auth/signup    | ![signup](./screenshots/signup.png) |
+| Login                       | POST /api/auth/login     | ![login](./screenshots/login.png)   |
+| Access Protected (No Token) | GET /api/users/profile   | ![notoken](./screenshots/notoken.png) |
+| Access Protected (With Token)| GET /api/users/profile  | ![withtoken](./screenshots/withtoken.png) |
