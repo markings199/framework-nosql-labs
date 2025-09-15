@@ -174,3 +174,56 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmVmMWM4N
 | Login                       | POST /api/auth/login     | ![login](./screenshots/login.png)   |
 | Access Protected (No Token) | GET /api/users/profile   | ![notoken](./screenshots/notoken.png) |
 | Access Protected (With Token)| GET /api/users/profile  | ![withtoken](./screenshots/withtoken.png) |
+
+Introduction — Week 6 Day 1: Basic Aggregation
+
+Today, you will learn how to use MongoDB’s aggregation pipeline to analyze and transform data. You will practice:
+
+Filtering documents with $match
+
+Unwinding arrays and grouping values with $unwind + $group
+
+Deriving new fields using $project
+
+Sorting results with $sort
+
+These operations help you generate insights from your data beyond simple queries.
+
+DAY 1 (Screenshots)
+
+Step 1: Filtering documents with $match
+
+![match](./screenshots/1.png)
+
+Step 2: $unwind + $group — Count of users by age
+![unwind](./screenshots/2.png)
+
+Step 3: $project — Add a new field
+![project](./screenshots/3.png)
+
+Step 4: $sort — Sort by age
+![sort](./screenshots/4.png)
+
+
+# Thunder Client Tests (Week 6 – Aggregation)
+
+| *Test*           | *Screenshot*                          |
+Introduction — Week 6 Day 2: Advanced Aggregation
+Today, you will learn how to use MongoDB’s aggregation pipeline to analyze and transform data. You will practice:
+DAY 2 (Screenshots)
+
+Step 1: $lookup — Join data from different collections
+![lookup](./screenshots/day2(1).png)
+
+Step 2: $group + $sort + $limit — Identify top customers by total spend
+![group](./screenshots/day2(2).png)
+
+Step 3: Tracking monthly signups using date operators
+![date](./screenshots/day2(3).png)
+
+Step 4: Creating indexes to improve query performance
+![index](./screenshots/day2(4).png)
+
+![index](./screenshots/day2(5).png)
+
+These exercises showed how aggregation can combine, summarize, and optimize data, while indexing makes queries faster and more efficient.
