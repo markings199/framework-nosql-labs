@@ -1,17 +1,21 @@
 const jwt = require("jsonwebtoken");
 
-function auth(req, res, next) {
-  const token = req.header("Authorization")?.split(" ")[1];
+module.exports = function auth(req, res, next) {
+  const authHeader = req.headers.authorization || "";
+  const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : null;
 
-  if (!token) return res.status(401).json({ message: "Access Denied. No token provided." });
+  if (!token) {
+    return res.status(401).json({ message: "No token provided" });
+  }
 
   try {
-    const decoded = jwt.verify(token, "secretkey"); // Must match secret used in login
-    req.user = decoded;                             // Attach payload to request
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    // Attach user info from token
+    req.user = { id: decoded.id, email: decoded.email, role: decoded.role };
+
     next();
   } catch (err) {
     return res.status(401).json({ message: "Invalid or expired token" });
   }
-}
-
-module.exports = auth;
+};
