@@ -227,3 +227,113 @@ Step 4: Creating indexes to improve query performance
 ![index](./screenshots/day2(5).png)
 
 These exercises showed how aggregation can combine, summarize, and optimize data, while indexing makes queries faster and more efficient.
+
+
+Introduction — Week 7: Full-Stack ShopHub MVP  
+This week, you will build an e-commerce application (backend + frontend). You will practice:  
+- Implementing REST API endpoints for products, categories, sellers, and admins  
+- Using MongoDB aggregation for analytics  
+- Integrating the backend with a React + Tailwind frontend 
+
+
+### Part 1: Backend API Development
+
+#### Public Endpoints (No Login Required)
+Step 1: **GET /api/products** → Returns product list  
+![products](./screenshots/backend-products-api.png)
+
+Step 2: **GET /api/categories** → Returns categories  
+![categories](./screenshots/backend-categories-api.png)
+
+---
+
+#### Seller Authentication & Product Management
+Step 3: **POST /api/auth/login** with seller credentials  
+![seller login](./screenshots/backend-seller-login.png)
+
+Step 4: **POST /api/products** (create product with seller token)  
+![seller create](./screenshots/backend-seller-create-product.png)
+
+Step 5: **PUT /api/products/:id** (update product with seller token)  
+![seller update](./screenshots/backend-seller-update-product.png)
+
+Step 6: **DELETE /api/products/:id** (delete product with seller token)  
+![seller delete](./screenshots/backend-seller-delete-product.png)
+
+---
+
+#### Admin Endpoints
+Step 7: **POST /api/auth/login** with admin credentials  
+![admin login](./screenshots/backend-admin-login.png)
+
+Step 8: **GET /api/admin/users** → List users  
+![admin users](./screenshots/backend-admin-users.png)
+
+Step 9: **GET /api/admin/product-stats** → Product statistics  
+![admin stats](./screenshots/backend-admin-product-stats.png)
+
+---
+
+#### Analytics Endpoints
+Step 10: **GET /api/stats/signups-by-month**  
+![signups](./screenshots/backend-stats-signups.png)
+
+Step 11: **GET /api/stats/top-spenders**  
+![top spenders](./screenshots/backend-stats-top-spenders.png)
+
+Step 12: **GET /api/stats/hobbies**  
+![hobbies](./screenshots/backend-stats-hobbies.png)
+
+
+
+### Part 2: Frontend Development
+
+#### Day 1: Basic Frontend Setup
+Step 13: **Landing Page**  
+![landing](./screenshots/w7-day1-landing-page.png)
+
+Step 14: **Login Page**  
+![login](./screenshots/w7-day1-login-page.png)
+
+Step 15: **Dashboard after login**  
+![dashboard](./screenshots/w7-day1-dashboard-after-login.png)
+
+
+#### Day 2: E-Commerce Features
+Step 16: **Catalog - All Products**  
+![catalog all](./screenshots/catalog-all.png)
+
+Step 17: **Catalog - Filtered by Category (Phone)**  
+![catalog filtered](./screenshots/catalog-filtered-phone.png)
+
+Step 18: **Seller - Create Product**  
+![seller create](./screenshots/seller-create.png)
+
+Step 19: **Seller - Edit Product**  
+![seller edit](./screenshots/seller-edit.png)
+
+Step 20: **Seller - Delete Product**  
+![seller delete](./screenshots/seller-delete.png)
+
+Step 21: **Reports - All Charts**  
+![reports](./screenshots/reports-charts.png)
+
+Step 22: **Admin - Users Table**  
+![admin users](./screenshots/admin-users1.png)
+
+Step 23: **Admin - Categories Chart**  
+![admin categories](./screenshots/admin-categories.png)
+
+Week 7 – Conclusion
+
+In Week 7, we wrapped up our e-commerce MVP ShopHub by combining everything we’ve learned:
+
+Backend (Express + MongoDB) → APIs for products, categories, sellers, admins, and analytics.
+
+Frontend (React + Tailwind) → Catalog browsing, login/dashboard, seller product management, and admin views.
+
+Analytics powered by MongoDB aggregation for insights like top spenders, signups, and hobbies.
+
+ This week was all about integration — taking the separate features we built in earlier weeks and connecting them into one complete, usable application.
+
+
