@@ -1,11 +1,25 @@
 export default function Landing() {
   return (
-    <div className="flex flex-col items-center justify-center h-[70vh] text-center">
-      <h1 className="text-4xl font-bold text-slate-900 mb-3">Welcome to ShopHub</h1>
-      <p className="text-slate-600 mb-6">A minimal e-commerce MVP built with React and MongoDB</p>
-      <div className="flex gap-3">
-        <a href="/login" className="px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition">Login</a>
-        <a href="/signup" className="px-4 py-2 rounded-xl border border-slate-300 hover:bg-slate-100 transition">Signup</a>
+    <div className="text-center py-16">
+      <h1 className="text-5xl font-bold text-gray-900 mb-6">
+        Welcome to ShopHub
+      </h1>
+      <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        A minimal e-commerce MVP built with React and MongoDB
+      </p>
+      <div className="space-x-4">
+        <a 
+          href="/login" 
+          className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-block"
+        >
+          Login
+        </a>
+        <a 
+          href="/signup" 
+          className="border border-gray-300 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors inline-block"
+        >
+          Signup
+        </a>
       </div>
     </div>
   );
